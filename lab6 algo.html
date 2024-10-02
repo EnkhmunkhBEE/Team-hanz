@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 6 algo</title>
+</head>
+<body>
+    <h1 id="rr">Lets play</h1>
+    <div>
+    <h2 style="color: red; margin-left: 45px;" id="p1">player 1</h2>
+    </div>
+    <div style="margin-left: 190px; margin-top: -45px;">
+    <h2 style="color: blue;" id="p2">player 2</h2>
+    </div>
+    <button onclick="toglo()" style="width: 100px; height: 30px; margin-top: 50px; margin-left: 60px;">END DAR</button>
+    <img src="sho1.png" id="zurag1" style="float: left;" >
+    <img src="sho2.png" id="zurag2" style="float: left;">
+
+  
+    <script>
+        let a=prompt("Must have first players");
+        let b=prompt("must have second player");
+        document.getElementById("p1").innerHTML=a;
+        document.getElementById("p2").innerHTML=b;
+
+function toglo(){
+ let shoa=Math.floor(Math.random()*6+1);
+ let shob=Math.floor(Math.random()*6+1);
+ document.getElementById("zurag1").src="C:/Users/DELL.DESKTOP-PTQ10MO/Desktop/sho"+shoa+'.png';
+ document.getElementById('zurag2').src="C:/Users/DELL.DESKTOP-PTQ10MO/Desktop/sho"+shob+'.png';
+ 
+ if(shoa>shob){
+ document.getElementById("rr").innerHTML="PLAYER 1 WINS!"
+ }
+else if(shoa<shob){
+    document.getElementById("rr").innerHTML="PLAYER 2 WINS!"
+}
+    else{
+        document.getElementById("rr").innerHTML="DRAW"
+}
+}
+
+    </script>
+</body>
+</html>
