@@ -7,23 +7,22 @@
 </head>
 <body>
 <script>
-const dans=0;
 let password;
 let songoh;
+let uldegdel=0;
 do{
     password=prompt(' please enter pin ');
 }while(password!=='123'){
     alert('password is correct');
-    alert('WELLCOME TO KHAAN BANK');
 }do{
-    songoh=prompt('1-guilgee,2-orlogo,3-uldegdel,4-butsah');
+    songoh=prompt('1-zarlaga,2-orlogo,3-uldegdel,4-butsah');
 if(songoh==="1"){
-    alert('guilgee hiih dansa songno nuu');
+    zarlaga();
     
 }else if(songoh==='2'){
-    alert('ali dans ruu');
+    orlogo();
 }else if(songoh==='3'){
-    alert('tanii uldegdel ....');
+    alert('tanii uldegdel :' +uldegdel)
 
 }else if(songoh==='4'){
     alert('ta butsah tsonh deer darla');
@@ -32,7 +31,34 @@ if(songoh==="1"){
 else{
     alert('buruu songolt');
 }
-}while(songoh!=="4");
+}
+while(songoh!=="4");
+function orlogo(){
+    let o=parseInt(prompt('ta orlogo oruulna u'))
+    uldegdel+=o
+ }
+function zarlaga(){
+    let z=parseInt(prompt('guilgee hiine uu'))
+    if(uldegdel>=(z+100)){
+        uldegdel=uldegdel-z-100
+    }
+}
+    
+    // function uldegdel(){
+    //     let u=parseInt(prompt('tanii uldegdel'+uldegdel))
+    // }
+ //function uldegdel(){
+//     let u=parseInt(prompt('uldegdel')+uldegdel)
+// }
+
+
+// // let a=prompt('too oruul');
+// // if(a<0)mod=-a;
+// // else mod=a
+
+// alert(mod)
+
+
 </script>
 
 

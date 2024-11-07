@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab11</title>
+    <style>
+        body{
+            margin: 0 auto;
+        }
+        
+    </style>
+</head>
+<body style="margin: 0 auto;">
+    <canvas id="canvas" width="800" height="600" style="border: 1px solid red;">
+
+    </canvas>
+    <script>
+        let can = document.getElementById("canvas");
+        let contx = can.getContext("2d")
+        let undur = 30 , urgun = 80
+
+        let xu=prompt('mur oruul')
+        let yu=prompt('bagana')
+        for(let x=40;x<=120*yu;x+=120){
+            for(y=40;y<=50*xu;y+=50){
+        contx.beginPath();
+        contx.rect(x,y,urgun,undur);
+        contx.fillStyle = "Blue";
+        contx.fill();
+        contx.closePath();
+            }
+
+        }
+
+        contx.beginPath();
+        contx.rect(350,560,110,20);
+        contx.fillStyle = "red";
+        contx.fill();
+        contx.closePath();
+
+        // contx.beginPath();
+        // contx.rect(80,20,urgun,undur);
+        // contx.fillStyle="Blue";
+        // contx.fill();
+        // contx.closePath();
+
+        // contx.beginPath();
+        // contx.rect(140,20,urgun,undur);
+        // contx.fillStyle="Blue";
+        // contx.fill();
+        // contx.closePath();
+
+        // contx.beginPath();
+        // contx.rect(20,40,urgun,undur)
+        // contx.fillStyle='purple'
+        // contx.fill()
+        // contx.closePath();
+
+        // contx.beginPath()
+        // contx.rect(140,40,urgun,undur)
+        // contx.fillStyle='pink'
+        // contx.fill()
+        // contx.closePath()
+
+
+
+    </script>
+
+    
+</body>
+</html>

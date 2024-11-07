@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the balls</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+        }
+        #gameArea {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            border: 2px solid #ffffff;
+            background-color: #1e1e1e;
+        }
+        .star, #catcher {
+            position: absolute;
+        }
+        .star {
+            width: 20px;
+            height: 20px;
+            background-color: yellow;
+            border-radius: 50%;
+        }
+        #catcher {
+            width: 60px;
+            height: 20px;
+            background-color: #20ff08;
+            bottom: 0;
+        }
+        #score {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .END{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div id="catcher"></div>
+    </div>
+    <div id="score">Оноо: 0</div>
+    <div class="END" id="end">CATCH THE BALL</div>
+
+    <script>
+        const gameArea = document.getElementById('gameArea');
+        const catcher = document.getElementById('catcher');
+        const scoreDisplay = document.getElementById('score');
+        
+        let score = 0;
+        let isGameOver = false;
+
+        // barigch
+        let catcherPosition = 170;
+        catcher.style.left =catcherPosition+ "px";
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && catcherPosition > 0) {
+                catcherPosition -= 20;
+            }
+            if (e.key === 'ArrowRight' && catcherPosition < gameArea.clientWidth - catcher.clientWidth) {
+                catcherPosition += 20;
+            }
+            catcher.style.left = catcherPosition+"px";
+        });
+
+        // od unagaaj ehleh function
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * (gameArea.clientWidth - 20)+"px";
+            gameArea.appendChild(star);
+            return star;
+        }
+
+        // od doosho unagaash function
+        function moveStar(star) {
+            let starInterval = setInterval(() => {
+                if (isGameOver) {
+                    clearInterval(starInterval);
+                    return;
+                }
+                const starTop = parseInt(star.style.top) || 0;
+                star.style.top = (starTop + 10) +"px";
+
+                // od hervee hursen bol  nuhtsul shalgah
+                if (
+                    starTop + 20 >= gameArea.clientHeight - catcher.clientHeight &&
+                    parseInt(star.style.left) > catcherPosition - 20 &&
+                    parseInt(star.style.left) < catcherPosition + catcher.clientWidth
+                ) {
+                    score++;
+                    scoreDisplay.innerText = "Оноо:" +score;
+                    star.remove();
+                    clearInterval(starInterval);
+                }
+
+                // hervee hureegu bol
+                if (starTop > gameArea.clientHeight) {
+                    star.remove();
+                    clearInterval(starInterval);                    
+                }
+            }, 50);
+        }
+
+        // davtald
+        function startGame() {
+            setInterval(() => {
+                if (!isGameOver) {
+                    const star = createStar();
+                    moveStar(star);
+                }
+            }, 1000);
+        }
+    startGame();
+        
+    </script>
+</body>
+</html>
